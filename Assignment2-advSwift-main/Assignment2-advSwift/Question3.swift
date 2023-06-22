@@ -1,70 +1,70 @@
 import Foundation
 
+// Parent class: Computer
 class Computer {
-    let cpu: String
-    let gpu: String
+    var cpu: String
+    var gpu: String
     var ram: Int
     var state: String = "Off"
-    var temp: Double
+    var temperature: Double
     
-    init(cpu: String, gpu: String, ram: Int, temp: Double) {
+    // Initialize a Computer object with specified CPU, GPU, RAM, and temperature
+    init(cpu: String, gpu: String, ram: Int, temperature: Double) {
         self.cpu = cpu
         self.gpu = gpu
         self.ram = ram
-        self.temp = temp
+        self.temperature = temperature
     }
     
+    // Upgrade the RAM to a new amount
     func upgradeRam(newAmount: Int) {
         ram = newAmount
     }
     
+    // Turn on the computer, setting the state to 'On'
     func turnOn() {
         state = "On"
     }
     
+    // Turn off the computer, setting the state to 'Off'
     func turnOff() {
         state = "Off"
     }
     
-    func getTemp() -> Double {
-        return temp
+    // Get the current temperature of the computer
+    func getTemperature() -> Double {
+        return temperature
     }
 }
 
+// Subclass: Laptop (inherits from Computer)
 class Laptop: Computer {
-    let isRamUpgradable: Bool
-    let screenSize: Double
-    let isTouchScreen: Bool
+    var isRamUpgradable: Bool
+    var screenSize: Double
+    var isTouchScreen: Bool
     
-    init(cpu: String, gpu: String, ram: Int, state: String, temp: Double, isRamUpgradable: Bool, screenSize: Double, isTouchScreen: Bool) {
+    // Initialize a Laptop object with specified CPU, GPU, RAM, state, temperature, and additional laptop-specific attributes
+    init(cpu: String, gpu: String, ram: Int, state: String, temperature: Double, isRamUpgradable: Bool, screenSize: Double, isTouchScreen: Bool) {
         self.isRamUpgradable = isRamUpgradable
         self.screenSize = screenSize
         self.isTouchScreen = isTouchScreen
         
-        super.init(cpu: cpu, gpu: gpu, ram: ram, temp: temp)
+        // Call the superclass initializer to set the inherited attributes
+        super.init(cpu: cpu, gpu: gpu, ram: ram, temperature: temperature)
+        
+        // Set the laptop-specific state
         self.state = state
     }
     
+    // Override the upgradeRam method to only perform the upgrade if RAM is upgradable
     override func upgradeRam(newAmount: Int) {
         if isRamUpgradable {
             super.upgradeRam(newAmount: newAmount)
         }
     }
     
+    // Close the laptop screen, setting the state to 'Sleep'
     func closeScreen() {
         state = "Sleep"
     }
 }
-
-// Example usage
-
-let computer = Computer(cpu: "Intel Core i7", gpu: "Nvidia GeForce RTX 3080", ram: 16, temp: 40.0)
-computer.turnOn()
-print(computer.state) // Output: On
-
-let laptop = Laptop(cpu: "AMD Ryzen 9", gpu: "Nvidia GeForce RTX 3070", ram: 8, state: "Off", temp: 35.0, isRamUpgradable: true, screenSize: 15.6, isTouchScreen: true)
-laptop.upgradeRam(newAmount: 16)
-print(laptop.ram) // Output: 16
-
-laptop.closeScreen()
-print(laptop.state) // Output: Sleep
