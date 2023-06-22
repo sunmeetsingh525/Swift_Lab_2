@@ -38,14 +38,14 @@ print("Area of square is:", squareArea)
 let uppercaseString = allCap(string: "hello swift")
 print("Uppercased string is:", uppercaseString)
 
-let array1 = [1, 2, 3, 4, 5, 6, 7] // case where array has middle element
+let array1 = [1, 2, 3, 4, 5, 6, 7] // case where array has middle element (odd array size)
 if let middleElement = middle(array: array1) { 
     print("Middle element:", middleElement)
 } else {
     print("No middle element")
 }
 
-let array2 = [1, 2, 3, 4] // case where array has no middle element
+let array2 = [1, 2, 3, 4] // case where array has no middle element (even array size)
 if let middleElement = middle(array: array2) {
     print("Middle element:", middleElement)
 } else {
