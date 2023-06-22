@@ -1,3 +1,10 @@
+//
+//  Question2.swift
+//  Assignment2-advSwift
+//
+//  Created by Cambrian on 2022-10-17.
+//
+
 import Foundation
 
 class Rectangle {
@@ -28,4 +35,3 @@ class Rectangle {
 let rectangle = Rectangle(height: 7, width: 15, color: "Red")
 rectangle.getPerimeter()
 rectangle.printColor()
-
